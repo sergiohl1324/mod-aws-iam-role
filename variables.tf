@@ -1,55 +1,55 @@
-### VARIABLES GLOBALES ###
+### GLOBAL VARIABLES ###
 
 variable "project" {
-  description = "Nombre del proyecto o aplicación"
+  description = "Project or application name"
   type        = string
   default     = "poc"
 }
 
 variable "environment" {
-  description = "Ambiente lógico (ej. nonproduction, production) usado para tagging"
+  description = "Logical environment (e.g. nonproduction, production) used for tagging"
   type        = string
   default     = "nonproduction"
 }
 
 variable "tags" {
-  description = "Tags adicionales que se fusionan con los tags por defecto"
+  description = "Additional tags merged with the default tags"
   type        = map(string)
   default     = {}
 }
 
-### VARIABLES IAM ROLE ###
+### IAM ROLE VARIABLES ###
 
 variable "role_use" {
-  description = "Propósito del rol — parte del nombre: poc-role-<project>-<role_use> (ej: ec2-ssm, ecs-task)"
+  description = "Purpose of the role — part of the name: poc-role-<project>-<role_use> (e.g. ec2-ssm, ecs-task)"
   type        = string
 }
 
 variable "assume_role_policy" {
-  description = "JSON de la trust policy (AssumeRolePolicyDocument). Define qué entidad puede asumir este rol"
+  description = "Trust policy JSON (AssumeRolePolicyDocument). Defines which entity can assume this role"
   type        = string
 }
 
 variable "description" {
-  description = "Descripción del IAM Role"
+  description = "IAM Role description"
   type        = string
   default     = ""
 }
 
 variable "path" {
-  description = "Path jerárquico del rol en IAM (ej: /, /service-roles/)"
+  description = "Hierarchical path of the role in IAM (e.g. /, /service-roles/)"
   type        = string
   default     = "/"
 }
 
 variable "max_session_duration" {
-  description = "Duración máxima de sesión en segundos (3600 a 43200)"
+  description = "Maximum session duration in seconds (3600 to 43200)"
   type        = number
   default     = 3600
 }
 
 variable "permissions_boundary" {
-  description = "ARN del policy que actúa como límite de permisos del rol"
+  description = "ARN of the policy that acts as a permissions boundary for the role"
   type        = string
   default     = null
 }
@@ -57,7 +57,7 @@ variable "permissions_boundary" {
 ### INSTANCE PROFILE ###
 
 variable "create_instance_profile" {
-  description = "Si true, crea un IAM Instance Profile con el mismo nombre del rol (requerido para EC2)"
+  description = "If true, creates an IAM Instance Profile with the same name as the role (required for EC2)"
   type        = bool
   default     = false
 }
@@ -65,13 +65,13 @@ variable "create_instance_profile" {
 ### POLICY ATTACHMENTS ###
 
 variable "managed_policy_arns" {
-  description = "Lista de ARNs de políticas gestionadas (AWS) a adjuntar al rol"
+  description = "List of managed policy ARNs (AWS) to attach to the role"
   type        = list(string)
   default     = []
 }
 
 variable "inline_policies" {
-  description = "Mapa de políticas inline: clave = nombre, valor = JSON de la política"
+  description = "Map of inline policies: key = name, value = policy JSON"
   type        = map(string)
   default     = {}
 }

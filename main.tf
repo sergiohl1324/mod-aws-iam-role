@@ -12,7 +12,7 @@ resource "aws_iam_role" "this" {
   tags = local.common_tags
 }
 
-### IAM INSTANCE PROFILE (opcional — para EC2) ###
+### IAM INSTANCE PROFILE (optional — for EC2) ###
 
 resource "aws_iam_instance_profile" "this" {
   count = var.create_instance_profile ? 1 : 0

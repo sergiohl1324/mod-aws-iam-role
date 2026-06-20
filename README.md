@@ -1,8 +1,8 @@
 # mod-aws-iam-role
 
-Módulo Terraform genérico para crear un IAM Role, opcionalmente con un Instance Profile (para EC2) y políticas (managed/inline) adjuntas.
+Generic Terraform module to create an IAM Role, optionally with an Instance Profile (for EC2) and attached policies (managed/inline).
 
-## Uso
+## Usage
 
 ```hcl
 module "iam_role_app_server" {
@@ -25,16 +25,16 @@ module "iam_role_app_server" {
 }
 ```
 
-## Inputs principales
+## Main inputs
 
-| Variable | Descripción | Default |
+| Variable | Description | Default |
 |---|---|---|
-| `project` | Nombre del proyecto (naming/tagging) | `"poc"` |
-| `role_use` | Propósito del rol, parte del nombre generado | — (requerido) |
-| `assume_role_policy` | JSON de la trust policy | — (requerido) |
-| `create_instance_profile` | Crea instance profile (para EC2) | `false` |
-| `managed_policy_arns` | ARNs de policies gestionadas a adjuntar | `[]` |
-| `inline_policies` | Mapa de policies inline | `{}` |
+| `project` | Project name (naming/tagging) | `"poc"` |
+| `role_use` | Purpose of the role, part of the generated name | — (required) |
+| `assume_role_policy` | Trust policy JSON | — (required) |
+| `create_instance_profile` | Create an instance profile (for EC2) | `false` |
+| `managed_policy_arns` | Managed policy ARNs to attach | `[]` |
+| `inline_policies` | Map of inline policies | `{}` |
 
 ## Outputs
 
